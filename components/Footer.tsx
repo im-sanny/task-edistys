@@ -1,8 +1,8 @@
-import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
+import React from 'react';
 
 interface FooterProps {
   href: string;
