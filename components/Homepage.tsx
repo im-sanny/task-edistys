@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button';
+import CTASection from'@/components/CTASection';
 
 const Homepage = () => {
   return (
     <div>
-      <Button>hello</Button>
+      <CTASection />
     </div>
   );
 };

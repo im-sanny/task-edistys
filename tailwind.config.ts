@@ -8,7 +8,11 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-  	extend: {
+		extend: {
+			 clipPath: {
+        'mobile': 'polygon(0 0, 100% 22%, 100% 100%, 0 100%)',
+        'desktop': 'polygon(0 0, 100% 28%, 100% 100%, 0 100%)'
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
