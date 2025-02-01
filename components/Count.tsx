@@ -45,64 +45,66 @@ const AnimatedNumber: React.FC<{ value: number; duration?: number }> = ({
 
 const Count = () => {
   return (
-    <section className="p-6 my-6 dark:bg-gray-100 dark:text-gray-800 text-center">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center text-lg font-bold mb-5 text-[#0C67D0]"
-      >
-        TRUSTED BY THE BEST
-      </motion.h1>
-      <div className="container grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 xl:grid-cols-3">
-        <motion.div
+    <>
+      <section className="p-6 my-6 dark:bg-gray-100 dark:text-gray-800 text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
+          className="text-center text-lg font-bold mb-5 text-[#0C67D0]"
         >
-          <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
-          <div className="flex flex-col justify-center">
-            <p className="text-8xl font-bold text-[#0C67D0]">
-              {'>'} <AnimatedNumber value={20} />
-            </p>
-            <p className="capitalize">Years of Experience</p>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
-        >
-          <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
-          <div className="flex flex-col justify-center">
-            <p className="text-8xl font-bold text-[#0C67D0]">
-              <AnimatedNumber value={40} />+
-            </p>
-            <p className="capitalize">Financial Institutions</p>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
-        >
-          <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
-          <div className="flex flex-col justify-center">
-            <p className="text-8xl font-bold text-[#0C67D0]">
-              {'>'}
-              <AnimatedNumber value={200} />m
-            </p>
-            <p className="capitalize">Million Customers</p>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          TRUSTED BY THE BEST
+        </motion.h1>
+        <div className="container grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 xl:grid-cols-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
+          >
+            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
+            <div className="flex flex-col justify-center">
+              <p className="text-8xl font-bold text-[#0C67D0]">
+                {'>'} <AnimatedNumber value={20} />
+              </p>
+              <p className="capitalize">Years of Experience</p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
+          >
+            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
+            <div className="flex flex-col justify-center">
+              <p className="text-8xl font-bold text-[#0C67D0]">
+                <AnimatedNumber value={40} />+
+              </p>
+              <p className="capitalize">Financial Institutions</p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
+          >
+            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
+            <div className="flex flex-col justify-center">
+              <p className="text-8xl font-bold text-[#0C67D0]">
+                {'>'}
+                <AnimatedNumber value={200} />m
+              </p>
+              <p className="capitalize">Million Customers</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 };
 
