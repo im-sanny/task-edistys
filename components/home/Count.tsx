@@ -55,7 +55,7 @@ const Count = () => {
         >
           TRUSTED BY THE BEST
         </motion.h1>
-        <div className="container grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 xl:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,6 @@ const Count = () => {
             transition={{ duration: 0.5 }}
             className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
           >
-            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
             <div className="flex flex-col justify-center">
               <p className="text-8xl font-bold text-[#0C67D0]">
                 {'>'} <AnimatedNumber value={20} />
@@ -78,7 +77,6 @@ const Count = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
           >
-            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
             <div className="flex flex-col justify-center">
               <p className="text-8xl font-bold text-[#0C67D0]">
                 <AnimatedNumber value={40} />+
@@ -91,9 +89,8 @@ const Count = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex w-full justify-center p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
+            className="flex w-full justify-center lg:justify-start p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-50 dark:text-gray-800"
           >
-            <div className="flex justify-center p-2 rounded-lg sm:p-4"></div>
             <div className="flex flex-col justify-center">
               <p className="text-8xl font-bold text-[#0C67D0]">
                 {'>'}
