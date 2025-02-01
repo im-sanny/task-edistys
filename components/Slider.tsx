@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
 const tabs = [
   'Customer focused',
@@ -23,7 +23,7 @@ const slides = [
     content:
       'Elevate customer experience and achieve agile financial product innovation with the world’s first, consumer-centric, real-time transaction account processing and credit limit system.',
     content2:
-      'Experience the advantages of integrated retail financial services technology, real-time analysis of transactional behaviour and product marketing opportunities.',
+      'Experience the advantages of integrated retail financial services technology, real-time analysis of transactional behaviour and product marketing opportunities. Lorem ipsum dolor sit amet consectetur.',
     image:
       'https://cdn.sanity.io/images/6jywt20u/production/c0be857dbe1878b1866b6bd0ddda7945d0f2779b-3672x2712.jpg?auto=format',
   },
@@ -31,7 +31,7 @@ const slides = [
     title: 'Agile and adaptable',
     subtitle: 'Agile and adaptable for growth',
     content:
-      'Innovate with evolving customer demands through our open platform-based technology architecture. Stay ahead of the ever-changing financial landscape with a strong focus on security, compliance and performance.',
+      'Innovate with evolving customer demands through our open platform-based technology architecture. Stay ahead of the ever-changing financial landscape with a strong focus on security,',
     content2:
       'Optimize your offerings to unlock new revenue streams and deliver an extraordinary customer experience, with digitally designed core banking, payment processing and lending capabilities.',
     image:
@@ -43,17 +43,17 @@ const slides = [
     content:
       'Navigate through the evolving regulatory landscape with confidence by streamlining compliance management—through real-time risk monitoring solutions powered by AI and machine learning.',
     content2:
-      'Transform your compliance strategy with flexible and diversified policy rules, powered by cutting- edge technology that is designed for seamless integration with core banking and card payment systems.',
+      'Transform your compliance strategy with flexible and diversified policy rules, powered by cutting- edge technology that is designed for seamless integration.',
     image:
       'https://cdn.sanity.io/images/6jywt20u/production/2b48e3b3fe95abd21ff8cb659f26ca05d91e9ef7-1509x1284.png?auto=format',
   },
   {
     title: 'Secure and safe',
-    subtitle: 'Highly secure and safe',
+    subtitle: 'Highly secure and safe to use',
     content:
-      'Discover unparalleled security trusted by financial institutions across the globe. Our applications are meticulously developed in compliance with international security standards, drawing on 20 years of technical expertise.',
+      'Discover unparalleled security trusted by financial institutions across the globe. Our applications are meticulously developed in compliance with international security standards.',
     content2:
-      'Join over 40 esteemed Fls, each serving more than 200 million customers, and benefit from our secure, robust and reliable infrastructure.',
+      'Join over 40 esteemed Fls, each serving more than 200 million customers, and benefit from our secure, robust and reliable infrastructure. Lorem ipsum dolor sit amet consectetur.',
     image:
       'https://cdn.sanity.io/images/6jywt20u/production/912e8d76c36130d4ed0e39af1727dd0fe4fff570-10000x5000.jpg?auto=format',
   },
@@ -61,7 +61,7 @@ const slides = [
 
 export default function Slider() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -150,7 +150,7 @@ export default function Slider() {
                       {slide.content2}
                     </p>
                   </CardContent>
-                  <div className="relative aspect-[4/3]">
+                  <div className="relative h-full w-full">
                     <img
                       src={slide.image}
                       alt={slide.title}
@@ -165,7 +165,7 @@ export default function Slider() {
         </Swiper>
       </section>
       <svg
-        className="max-h-[340px]  md:my-sm my-lg w-full min-h-[300px]"
+        className="max-h-[240px]  md:my-sm my-lg w-full min-h-[240px]"
         preserveAspectRatio="xMidYMid slice"
         viewBox="0 0 1920 280"
         fill="none"
