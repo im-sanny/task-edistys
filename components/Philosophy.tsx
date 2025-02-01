@@ -1,3 +1,4 @@
+'use client';
 import {
   Card,
   CardContent,
@@ -5,8 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import 'animate.css';
 import { Computer, Lightbulb, Share } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface philosophyCard {
   icon: React.ReactNode;
@@ -16,6 +18,12 @@ interface philosophyCard {
 }
 
 const Philosophy = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Set visible after component mounts to trigger animation
+    setIsVisible(true);
+  }, []);
   const philosophyCards: philosophyCard[] = [
     {
       icon: <Share className="w-6 h-6" />,
@@ -81,7 +89,20 @@ const Philosophy = () => {
         {/* Cards section */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {philosophyCards.map((card, index) => (
-            <Card key={index} className="bg-[#F8FCFF] border-none shadow-none">
+            <Card
+              key={index}
+              className={`bg-[#F8FCFF] border-none shadow-none
+                ${
+                  isVisible
+                    ? 'animate__animated animate__slideInUp'
+                    : 'opacity-0'
+                }
+              `}
+              style={{
+                animationDelay: `${index * 200}ms`,
+                animationDuration: '1s',
+              }}
+            >
               <CardHeader>
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center ${
