@@ -74,6 +74,12 @@ export default function Slider() {
   return (
     <>
       <section className="mt-20 max-w-7xl mx-auto px-4 md:px-16">
+        <h3 className="text-blue-500 text-md font-semibold text-center pb-6">
+          TECHNOLOGY BUILT FOR YOU
+        </h3>
+        <h1 className="text-6xl font-semibold text-center">
+          The future of finance
+        </h1>
         <div className="flex-wrap space-x-4 justify-center items-center lg:flex hidden py-8">
           {tabs.map((tab) => (
             <Button
@@ -165,7 +171,7 @@ export default function Slider() {
         </Swiper>
       </section>
       <svg
-        className="max-h-[240px]  md:my-sm my-lg w-full min-h-[240px]"
+        className="max-h-[240px] md:my-sm my-lg w-full min-h-[60px]"
         preserveAspectRatio="xMidYMid slice"
         viewBox="0 0 1920 280"
         fill="none"
