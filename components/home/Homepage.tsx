@@ -1,5 +1,5 @@
-import Banner from '@/components/Banner';
-import Customer from '@/components/Customer';
+import Banner from '@/components/home/Banner';
+import Customer from '@/components/home/Customer';
 import Company from '@/components/home/Company';
 import Count from '@/components/home/Count';
 import CTASection from '@/components/home/CTASection';
