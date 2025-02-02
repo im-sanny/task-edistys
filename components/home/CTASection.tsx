@@ -43,8 +43,7 @@ const CTASection = () => {
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <Link
             href="/contact-us"
-            className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 text-white
-              rounded-md shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl"
+            className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 text-white rounded-md shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-[1.03] hover:shadow-xl"
           >
             <span className="mr-2">Contact Us</span>
             <ArrowRight

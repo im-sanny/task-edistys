@@ -32,19 +32,37 @@ const Navbar = () => {
     useState<(typeof LANGUAGES)[number]['code']>('EN');
 
   const lastScrollY = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Throttle scroll handler for better performance
+  // Improved scroll handler with proper throttling
   const handleScroll = useCallback(() => {
-    const throttle = setTimeout(() => {
+    // Clear the existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set new timeout
+    timeoutRef.current = setTimeout(() => {
       const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY < lastScrollY.current || currentScrollY < 50);
+      // Show navbar if scrolling up or at top
+      setIsVisible(
+        currentScrollY < lastScrollY.current || // Scrolling up
+          currentScrollY < 50, // Near the top
+      );
       setIsScrolled(currentScrollY > 50);
       lastScrollY.current = currentScrollY;
     }, 100);
+  }, []);
 
-    return () => clearTimeout(throttle);
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   // Close menu on route change
@@ -57,42 +75,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Handle click outside and escape key for menu
+  // Close menu on route change
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
+    setMenuOpen(false);
+  }, [pathname]);
 
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMenuOpen(false);
-      }
-    };
-
-    if (menuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleEscapeKey);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [menuOpen]);
-
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [menuOpen]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   const isActiveLink = (path: string) => pathname === path;
 
@@ -108,7 +99,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4 bg-[#1F80F0] lg:bg-transparent">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="Home">
+          <Link
+            href="/"
+            className={`flex items-center ${
+              isScrolled ? 'bg-blue-600' : 'text-white'
+            } `}
+            aria-label="Home"
+          >
             <Image
               src="/footerLogo.webp"
               width={200}
@@ -148,9 +145,9 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className={`flex items-center gap-2 ${
+                  className={`flex items-center gap-2 bg-transparent py-4 px-10 border rounded-full text-sm ${
                     isScrolled ? 'text-blue-600' : 'text-white'
                   }`}
                 >
@@ -176,11 +173,11 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-6">
             <Button
               asChild
-              className={`group flex items-center gap-2 px-6 py-2.5 font-medium rounded-full transition-all duration-300 transform hover:scale-105
+              className={`group flex items-center gap-2 px-6 py-6 rounded-sm transition-all font-semibold text-lg duration-300 transform hover:scale-105
               ${
                 isScrolled
                   ? 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg'
-                  : 'bg-white text-gray-900 hover:bg-gray-100 hover:shadow-md'
+                  : 'bg-transparent border text-gray-900 hover:text-white hover:bg-orange-400 hover:shadow-md'
               }`}
             >
               <Link href="/contact">
