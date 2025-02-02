@@ -20,7 +20,6 @@ const AnimatedFigure: React.FC<AnimatedFigureProps> = ({
   alt,
   className,
   yValues,
-
   duration = 10,
   ease = 'easeInOut',
 }) => {
@@ -41,6 +40,26 @@ const AnimatedFigure: React.FC<AnimatedFigureProps> = ({
   );
 };
 
+const BannerImage: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => {
+  const imageProps = {
+    src: '/assets/banner.jpg',
+    alt: 'POWERING THE FUTURE OF FINANCE',
+    className: `object-cover w-full h-full ${
+      isDesktop ? '-mt-10 hidden lg:block' : '-mb-10 block lg:hidden'
+    }`,
+    style: {
+      clipPath: isDesktop
+        ? 'polygon(76% 0, 100% 0, 100% 75%, 80% 100%, 0 100%, 0 100%)'
+        : 'polygon(0 14%, 100% 7%, 100% 100%, 0% 100%)',
+    },
+    loading: 'lazy' as const,
+    whileHover: { scale: 1.02 },
+    transition: { duration: 0.3 },
+  };
+
+  return <motion.img {...imageProps} />;
+};
+
 const BannerContent: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -55,42 +74,55 @@ const BannerContent: React.FC = () => {
   );
   const foregroundY = useTransform(scrollYProgress, [0, 1], ['0%', '1.88962%']);
 
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay },
+    }),
+  };
+
   return (
     <div className="flex flex-col lg:flex-row relative h-auto lg:h-[110vh]">
-      <AnimatedFigure
-        src="/assets/WaveLinesDesktop2.svg"
-        alt="foreground frame"
-        className="absolute h-[200%] w-[100%] z-10 -top-[120%] -left-[8%] overflow-b-hidden hidden lg:block"
-        yValues={[-15, 15, -15]}
-        style={{ y: backgroundY }}
-      />
+      <motion.div style={{ y: backgroundY }} className="absolute w-full h-full">
+        <AnimatedFigure
+          src="/assets/WaveLinesDesktop2.svg"
+          alt="foreground frame"
+          className="absolute h-[200%] w-[100%] z-10 -top-[120%] -left-[8%] overflow-b-hidden hidden lg:block"
+          yValues={[-15, 15, -15]}
+        />
+      </motion.div>
 
       <motion.div
-        className="flex flex-col w-full lg:w-auto md:space-y-sm space-y-8 pt-20 lg:pt-36 px-6 lg:pl-14"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        className="flex flex-col w-full lg:w-[55%] md:space-y-sm space-y-8 pt-20 lg:pt-36 px-6 lg:pl-14 z-20"
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
       >
         <div className="space-y-8 max-w-4xl">
           <motion.h1
             className="text-4xl lg:text-7xl font-semibold text-white"
-            whileInView={{ opacity: [0, 1], y: [20, 0] }}
-            transition={{ duration: 0.6 }}
+            variants={textVariants}
+            custom={0}
           >
             Embrace the future of finance
           </motion.h1>
           <motion.p
-            className="text-white text-md font-semibold"
-            whileInView={{ opacity: [0, 1], y: [20, 0] }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-white text-md lg:text-lg font-semibold"
+            variants={textVariants}
+            custom={0.2}
           >
             Reimagine financial services with AnyTech&apos;s open platform,
             distributed banking solution that powers transformation
           </motion.p>
-          <motion.div
-            whileInView={{ opacity: [0, 1], y: [20, 0] }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <AnimatedFigure
+            src="/assets/WaveLinesDesktop4.svg"
+            alt="foreground frame"
+            className="absolute h-[50%] w-[50%] z-10 -top-[10%] right-[30%] pointer-events-none hidden lg:block"
+            yValues={[-15, 15, -15]}
+          />
+          <motion.div variants={textVariants} custom={0.4}>
             <Link
               href="/contact-us"
               className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 text-white
@@ -105,42 +137,19 @@ const BannerContent: React.FC = () => {
           </motion.div>
         </div>
       </motion.div>
+
       <motion.div
         ref={containerRef}
-        className="relative w-full lg:w-auto mt-8 lg:mt-0 h-[50vh] lg:h-auto"
+        className="relative w-full lg:w-[45%] mt-8 lg:mt-0 h-[50vh] lg:h-auto"
         style={{ y: foregroundY }}
       >
-        {/* Desktop Image */}
-        <motion.img
-          src="/assets/banner.jpg"
-          alt="POWERING THE FUTURE OF FINANCE"
-          className="object-cover w-full h-full -mt-10 hidden lg:block"
-          style={{
-            clipPath:
-              'polygon(76% 0, 100% 0, 100% 75%, 80% 100%, 0 100%, 0 100%)',
-          }}
-          loading="lazy"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        />
-
-        {/* Mobile Image */}
-        <motion.img
-          src="/assets/banner.jpg"
-          alt="banner"
-          className="object-cover w-full h-full -mb-10 block lg:hidden"
-          style={{
-            clipPath: 'polygon(0 14%, 100% 7%, 100% 100%, 0% 100%)',
-          }}
-          loading="lazy"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        />
+        <BannerImage isDesktop={true} />
+        <BannerImage isDesktop={false} />
 
         <AnimatedFigure
-          src="/assets/pngLine.png"
+          src="/assets/WaveLinesDesktop2.svg"
           alt="foreground frame"
-          className="absolute h-[150%] w-[100%] z-10 -top-[25%] right-[20%] hidden lg:block"
+          className="absolute h-[150%] w-[100%] z-10 -top-[25%] right-[20%] pointer-events-none"
           yValues={[-15, 15, -15]}
         />
       </motion.div>
@@ -151,7 +160,7 @@ const BannerContent: React.FC = () => {
 const Banner: React.FC = () => {
   return (
     <section
-      className="bg-gradient-to-r from-blue-800 to-blue-500 mb-12"
+      className="bg-gradient-to-r from-blue-800 to-blue-500 mb-12 relative overflow-hidden"
       style={{ clipPath: 'polygon(0 0, 100% 0%, 100% 90%, 0 97%)' }}
     >
       <div className="border-none shadow-none bg-transparent">

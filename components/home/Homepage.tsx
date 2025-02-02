@@ -1,3 +1,4 @@
+import Banner from '@/components/Banner';
 import Customer from '@/components/Customer';
 import Company from '@/components/home/Company';
 import Count from '@/components/home/Count';
@@ -8,6 +9,7 @@ import Slider from '@/components/home/Slider';
 const Homepage = () => {
   return (
     <div>
+      <Banner />
       <Customer />
       <Philosophy />
       <Slider />

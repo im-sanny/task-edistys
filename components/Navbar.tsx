@@ -105,7 +105,7 @@ const Navbar = () => {
       }`}
       role="banner"
     >
-      <div className="container mx-auto px-4 bg-slate-600">
+      <div className="container mx-auto px-4 bg-[#1F80F0] lg:bg-transparent">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Home">
