@@ -96,18 +96,18 @@ const Navbar = () => {
       }`}
       role="banner"
     >
-      <div className="container mx-auto px-4 bg-[#1F80F0] lg:bg-transparent">
+      <div className="container mx-auto px-4 lg:bg-transparent">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link
             href="/"
             className={`flex items-center ${
-              isScrolled ? 'bg-blue-600' : 'text-white'
+              isScrolled ? '' : 'text-white'
             } `}
             aria-label="Home"
           >
             <Image
-              src="/footerLogo.webp"
+              src="https://cdn.sanity.io/images/6jywt20u/production/70e2228631883a893695c64b637b99dc8661871c-171x28.svg?w=171&auto=format"
               width={200}
               height={100}
               alt="Any Technology Logo"

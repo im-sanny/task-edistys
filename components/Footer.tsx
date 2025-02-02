@@ -1,7 +1,9 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Facebook, Twitter, Instagram } from 'lucide-react'; // Import social media icons
 import React from 'react';
 
 interface FooterProps {
@@ -29,17 +31,42 @@ const Footer = () => {
     <footer className="w-full">
       <section className="bg-[#002045]">
         <div className="container mx-auto px-4 py-16">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             {/* Logo Section */}
             <div className="flex-shrink-0">
               <Image
-                src="/footerLogo.webp"
+                src="https://cdn.sanity.io/images/6jywt20u/production/ed83f5f1e94efb47572d503f53456dcff902b81c-200x32.svg?w=200&fm=webp"
                 width={200}
                 height={100}
-                alt="Any Technology Logo"
+                alt="Any Technology Company Logo"
                 className="object-contain"
                 priority
               />
+            </div>
+
+            {/* Social Media Icons (Mobile Only) */}
+            <div className="flex md:hidden space-x-4 mt-4">
+              <Link
+                href="https://facebook.com"
+                target="_blank"
+                className="text-[#00E9EA] hover:text-blue-500"
+              >
+                <Facebook size={24} />
+              </Link>
+              <Link
+                href="https://twitter.com"
+                target="_blank"
+                className="text-[#00E9EA] hover:text-blue-500"
+              >
+                <Twitter size={24} />
+              </Link>
+              <Link
+                href="https://instagram.com"
+                target="_blank"
+                className="text-[#00E9EA] hover:text-blue-500"
+              >
+                <Instagram size={24} />
+              </Link>
             </div>
 
             {/* Solutions Links */}
@@ -51,11 +78,9 @@ const Footer = () => {
               />
               <div className="flex flex-col md:flex-row gap-4 md:gap-5">
                 {solutions.map((solution) => (
-                  <React.Fragment key={solution.name}>
-                    <FooterLink href={solution.href}>
-                      {solution.name}
-                    </FooterLink>
-                  </React.Fragment>
+                  <FooterLink key={solution.name} href={solution.href}>
+                    {solution.name}
+                  </FooterLink>
                 ))}
               </div>
             </div>
