@@ -14,9 +14,9 @@ import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const NAVIGATION_ITEMS = [
-  { label: 'Home', path: '/home' },
-  { label: 'About', path: '/about' },
+  { label: 'Solution', path: '/solutions' },
   { label: 'Services', path: '/services' },
+  { label: 'About', path: '/about-us' },
 ] as const;
 
 const LANGUAGES = [
