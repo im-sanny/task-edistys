@@ -1,9 +1,9 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram } from 'lucide-react'; // Import social media icons
 import React from 'react';
 
 interface FooterProps {

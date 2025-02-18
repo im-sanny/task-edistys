@@ -101,9 +101,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className={`flex items-center ${
-              isScrolled ? '' : 'text-white'
-            } `}
+            className={`flex items-center ${isScrolled ? '' : 'text-white'} `}
             aria-label="Home"
           >
             <Image
